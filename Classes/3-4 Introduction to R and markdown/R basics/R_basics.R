@@ -338,9 +338,6 @@ df$black   <- factor(df$black)
 
 str(df)
 
-df %>% filter(educ >17 & hours>=45)
-df %>% distinct(educ)
-
 
 
 # some basic plots 
