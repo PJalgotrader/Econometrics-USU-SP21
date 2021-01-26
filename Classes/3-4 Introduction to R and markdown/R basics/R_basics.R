@@ -319,20 +319,20 @@ my_table
 
 
 prop.table(my_table,margin= 1)
-test <- prop.table(my_table,2)
+my_prob_table <- prop.table(my_table,2)
 
 
 # changing the names in rows and columns:
 
-colnames(test) <- c("non black", "black")
-rownames(test)<- c("single", "married")
-test
-round(test,2)
+colnames(my_prob_table) <- c("non black", "black")
+rownames(my_prob_table)<- c("single", "married")
+my_prob_table
+round(my_prob_table,2)
 
 
 
 
-# factorizing some variables
+# factorizing some variables (we will use this for making dummy variables later in the course)
 df$married <- factor(df$married)
 df$black   <- factor(df$black)
 
