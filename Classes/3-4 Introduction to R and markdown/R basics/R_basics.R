@@ -319,17 +319,16 @@ my_table
 
 
 prop.table(my_table,margin= 1)
-prop.table(my_table,2)
+test <- prop.table(my_table,2)
 
 
+# changing the names in rows and columns:
 
-# test <- mutate(df, marrital_status=ifelse(married==1,"married","single"), race=ifelse(black==1,"black", "non_black"))
-# table(test$marrital_status)
-# table(test$race)
-# my_new_table <- table(test$marrital_status, test$race )
-# 
-# round(prop.table(my_new_table,1),2)
-# round(prop.table(my_new_table,2),2)
+colnames(test) <- c("non black", "black")
+rownames(test)<- c("single", "married")
+test
+round(test,2)
+
 
 
 
