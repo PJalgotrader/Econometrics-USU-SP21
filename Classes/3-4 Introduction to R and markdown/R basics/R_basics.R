@@ -303,7 +303,8 @@ summary(df)
 
 
 # Handling missing data
-library(naniar)
+library(visdat)
+vis_dat(df)
 vis_miss(df)
 
 
