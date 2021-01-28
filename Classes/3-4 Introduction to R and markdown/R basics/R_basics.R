@@ -232,6 +232,7 @@ library(dplyr)
 
 
 new_df <- data.frame(names=c("PJ", "TJ", "CJ", "MJ"), GPA=c(2,3.8,3.5, 4))
+
 new_df
 
 
@@ -264,13 +265,16 @@ filter(new_df, GPA>3 & height>=175)
 
 # arrange()
 arrange(new_df, GPA)
-arrange(new_df, desc(height))
+arrange(new_df, desc(GPA))
+
+
 
 # select()
 new_df$height
 new_df["height"]
 select(new_df, height)
-select(new_df, c(is_pass,names))
+select(new_df, c(names,is_pass))
+
 
 # So what is the power of select?
 names(wage2)
@@ -278,6 +282,12 @@ select(wage2, contains("educ"))
 head(select(wage2, starts_with("E"))) # what if I put a negative sign before start_with ? 
 head(select(wage2, ends_with("c")))
 # you want even more power in terms of selecting columns? google grep() function Rdocumentation! 
+
+
+
+
+
+
 
 
 
@@ -292,7 +302,6 @@ new_df %>% filter(GPA>3 & height>=170) %>% arrange(desc(height)) %>% select(name
 
 
 
-
 # working with wooldridge data 
 # example : wage2
 
@@ -303,13 +312,19 @@ summary(df)
 
 
 # Handling missing data
+# install.packages("visdat")
 library(visdat)
+
 vis_dat(df)
 vis_miss(df)
 
 
 # cleaning the data set
 df_clean <-na.omit(df)
+
+
+
+
 
 
 # Data tables
@@ -330,7 +345,7 @@ my_table
 
 # proportion tables
 prop.table(my_table,margin= 1)
-prop.table(my_table,2)
+prop.table(my_table,margin= 2)
 
 
 
@@ -348,7 +363,7 @@ df<- wage2
 
 # histogram
 hist(df$wage)
-hist(df$wage, xlab = "wage", col = "blue")
+hist(df$wage, xlab = "wage", col = "blue", breaks = 5)
 
 
 
