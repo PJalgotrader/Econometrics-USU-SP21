@@ -24,7 +24,7 @@ This is my answer to section (i)
 
 This is my answer to section (ii)
 
----------
+--------
 
 
 
@@ -32,6 +32,7 @@ This is my answer to section (ii)
 
 ```{r include=FALSE}
 library(wooldridge)
+
 ```
 
 ## C1 Use the data in wage1 for this exercise.
@@ -50,7 +51,7 @@ This is my answer to section (i)
 # Including r output within some text 
 
 for example I calculated the average number of cars as: 
-```{r}
+```{r, comment=NA}
 avg_speed <- mean(cars$speed)
 avg_speed
 ```
@@ -59,6 +60,10 @@ from the R output above, we see that the average speed is equal to 15.4.
 
 Or you could directly do some in-line calculations. 
 Here is the average speed: `r mean(cars$speed)`. 
+
+
+this is test
+
 
 We can also insert plots from R in Rmarkdown: 
 

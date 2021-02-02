@@ -1,0 +1,119 @@
+---
+title: "HW2_template"
+author: "G3-Pedram Jahangiry"
+date: "2/1/2021"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r include=FALSE}
+library(wooldridge)
+library(dplyr)
+```
+
+
+# R crash course 
+
+
+
+this is test. What is the average weight in mtcars data. 
+
+```{r, comment=NA}
+mean(mtcars$wt)
+```
+
+so here is the average weight: `r round(mean(mtcars$wt),2) `.
+
+
+------------ 
+
+another test: 
+
+let's type the regression equation: $y= \beta_0 + \beta_1 x_1 + \epsilon$
+
+Now let's put it in the center: $$y= \beta_0 + \beta_1 x_1 + \epsilon$$
+
+----- 
+
+another fun test: 
+Let's import a complicated formula into markdown using mathpix: 
+
+
+$$
+\widetilde{\beta}_{1}=\beta_{1}+\left(n^{-1} \sum_{i=1}^{n}\left(z_{i}-\bar{z}\right) u_{i}\right) /\left(n^{-1} \sum_{i=1}^{n}\left(z_{i}-\bar{z}\right) x_{i}\right)
+$$
+
+
+## Question 1
+
+Replicate the following vector of numbers using seq() function and call it **v1**.
+
+```{r, comment=NA}
+
+v1 <- seq(1,17,4)
+v1
+```
+
+
+## Question 2 
+
+
+
+## Question 3
+Assign the dataframe mtcars from the built-in datasets in R to a new dataframe
+and call it df. Show the first 10 rows of your dataframs.
+
+```{r, comment=NA}
+df<- mtcars
+head(df,10)
+
+```
+
+
+--------------
+
+
+# computer exercise
+
+## Question 4 
+
+### (i)
+
+What is percentage of the men in the sample report abusing alcohol?
+
+```{r, comment=NA}
+df <- alcohol
+summary(df$abuse)
+```
+
+from the summary table above,  9.917% of men are alcohol abusers in this data set. 
+
+or alternatively the number is `r round(prop.table(table(df$abuse)),3)[2]`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
