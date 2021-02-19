@@ -1,0 +1,74 @@
+---
+title: "Using Stargazer to generate cleaner regression tables in R"
+author: "Prof. Pedram Jahangiry"
+date: 
+output:
+  word_document: default
+  pdf_document: default
+---
+
+---------
+
+```{r include=FALSE}
+library(stargazer)
+library(wooldridge)
+```
+
+
+```{r, comment=NA}
+
+reg <- lm ( salary ~ roe , ceosal1   )
+stargazer(reg, type="text")
+
+
+```
+
+\newpage
+
+You can put multiple regression results in one table as well: 
+
+
+```{r, comment=NA}
+
+reg_log <- lm ( log(salary) ~ roe , ceosal1   )
+stargazer(reg, reg_log, type="text")
+
+
+```
+
+
+--- 
+
+
+Here are some useful equations for your HW4: 
+
+1. You can write a math eaution and put it in the middle of the page by using two dollar signs: 
+$$kids = \beta_0 + \beta_1 educ + u $$
+
+2. Here are some other examples: 
+$$E(u|inc) = E(\sqrt{inc} * e|inc) = (\sqrt{inc})E(e|inc)$$ 
+
+$$var(u|inc)= var(\sqrt{inc}. e | u) = \sqrt{inc}^2 var(e|inc) = inc * var(e) = inc * \sigma^2_e$$
+
+
+$$\widehat{\textit{prate}} = \hat{\beta_0} + \hat{\beta_1}\textit{mrate}$$
+
+3. In-line math equations by using one dollar sign. Example: Since we are working with a level-log model, we know that $\Delta y = (\beta_1/100)\% \Delta x$.
+
+
+
+4. writing a regression model in two lines: 
+$$\widehat{\textit{math12}} = \hat{\beta_0} + \hat{\beta_1}\textit{read}12$$ 
+$$n = ?, R^2 = ?$$
+
+
+
+
+
+
+
+
+
+
+
+
