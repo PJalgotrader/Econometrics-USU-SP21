@@ -81,9 +81,9 @@ cbind(roe, salary, salaryhat,uhat)[1:15,  ]
 #-----------------------------------------------------
 # Plotting the data and regression line (SRF)
 
+
 plot(ceosal1$roe, ceosal1$salary, xlab="ROE" , ylab = "Salary in thousand $", main=" Regressing salary on roe",  col="blue")
 abline(reg_sal_roe, col="red" , lwd=3)
-abline(reg_sal_roe_origin, col="black" , lwd=3)
 
 
 
@@ -138,13 +138,7 @@ cor(wage1$wage, wage1$educ)^2
 cor(wage1$wage, predict(SRM))^2
 
 
-# check for regression through origin
-SRM_orig <- lm(wage~0+educ,wage1)
-stargazer(SRM, SRM_orig, type = "text")
 
-# r2 != corr(x,y)^2 or corr(y, yhat)^2
-cor(wage1$wage, wage1$educ)^2
-cor(wage1$wage, fitted(SRM_orig))^2
 
 
 # let's check E(u)=0 or (E(u_hat))=0 . what do you think?
