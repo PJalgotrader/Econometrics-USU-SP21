@@ -25,7 +25,7 @@ library(dplyr)
 # Example 2-3 : CEO salary and ROE
 
 #------------------------------------------------------
-# Mannual calculations of OLS coefficient
+# Manual calculations of OLS coefficient (optional)
 
 # ingredients to the OLS formulas 
 salary <- ceosal1$salary
@@ -75,15 +75,6 @@ salaryhat <- fitted(reg_sal_roe)
 uhat      <- resid(reg_sal_roe) # check if  (resid = y - yhat ) you can try it out by using: y_yhat <- ceosal1$salary - yhat
 
 cbind(roe, salary, salaryhat,uhat)[1:15,  ]
-
-
-
-
-#-----------------------------------------------------------------------------------
-## Regression through the origin (forcing the intercept to be equal to 0)
-reg_sal_roe_origin <- lm ( salary ~ 0 + roe , ceosal1   )
-stargazer(reg_sal_roe, reg_sal_roe_origin, type="text")
-
 
 
 
