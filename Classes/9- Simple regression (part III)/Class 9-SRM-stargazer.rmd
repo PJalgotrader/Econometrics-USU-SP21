@@ -1,10 +1,12 @@
 ---
 title: "Using Stargazer to generate cleaner regression tables in R"
 author: "Prof. Pedram Jahangiry"
-date: 
+date: "null"
 output:
   word_document: default
   pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 ---------
