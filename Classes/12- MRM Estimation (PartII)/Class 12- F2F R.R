@@ -40,16 +40,16 @@ plot(df$age, df$cons) # do you see the heteroskedasticity, what can we do? try l
 
 # starting with quad
 # 3. Why do we need to pass both ???? and ????^2 to the quadratic model?
-# 8. when do we use "I" in R?
-MRM_quad <-  lm(cons~ inc + I(inc^2)+ age , df)
+# 8. when do we use "I()" in R?
+MRM_quad <-  lm(cons~ inc + I(inc^2) + age , df)
 stargazer(SRM,MRM,MRM_quad ,type = 'text')
 
 # let's try log now?
 MRM_log <-  lm(log(cons)~ log(inc) + age , df)
 stargazer(SRM,MRM,MRM_quad, MRM_log ,type = 'text')
-# so which one is the winner? how do you interpret the coef of log(inc).
+#  so which one is the winner? how do you interpret the coef of log(inc).
 
-#------------------------------------------------------------
+# -----------------------------------------------------------
 
 # 4. I was confused about the derivative part. The derivative is only measuring the slope at one instantaneous point, right? It is not giving us a new model, is it?
 MRM1 <-  lm(cons~ I(inc/1000) + I((inc/1000)^2)+ age , df)
