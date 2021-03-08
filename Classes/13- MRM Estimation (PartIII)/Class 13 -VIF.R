@@ -1,4 +1,4 @@
-# Pedram Jahangiry
+# Prof. Pedram Jahangiry
 
 # VIF: test for existance of multicollinearity
 
