@@ -41,30 +41,42 @@ qt(0.90, 29)
 
 reg <- lm(lwage~jc+univ+exper, twoyear)
 summary(reg)
+stargazer(reg, type = "text")
 
+# H0: b1>=b2   H1: b1 < b2 i.e. b1-b2 <0 
 
+reg_new <- lm(lwage ~ jc + I(jc+univ) + exper, twoyear)
+stargazer(reg, reg_new,  type = "text")
+
+# let's do left tailed test. 
+
+# t stat approach
+t <- (-0.01-0)/0.007
+alpha = 0.05
+c <- qt(0.05, 6763- 4)
+
+abs(t) > abs(c) # we fail to reject that theta=0, i.e. b1=b2
+
+# p value approach
+t <- (-0.01-0)/0.007
+pt(t, 6763-4 )
+
+# the pvalue is 7.65%. So for alpha= 5% we fail to reject the null because
+# pvalue > 5%
+
+# -----------------------------------------------
 
 # H0: b1=b2   H1: b1 != b2
 df          <- mutate(totcoll= jc+univ, twoyear)
-reg_new     <- lm(lwage~jc+totcoll+exper, df)
+reg_new2    <- lm(lwage~jc+totcoll+exper, df)
 
-summary(reg_new)
+summary(reg_new2)
 
-stargazer(reg, reg_new, type="text")
+stargazer(reg, reg_new,reg_new2,  type="text")
 
-# what if we want to test H1: b1 < b2? 
-
-t <- -1.468
-qt(0.05, 6759 )
-
-
-# what is the p-value for one tailed test
-pt(-1.468, 6759)
-
-# so the p-value is 7% 
 
 # Constructing 95% confidence interval
-confint(reg_new, level =  0.95)
+confint(reg_new2, level =  0.95)
 
 #-------------------------------------------------------
 
@@ -81,7 +93,29 @@ summary(reg_new2)
 stargazer(reg, reg_new, reg_new1, reg_new2, type="text")
 
 
-#------------------------------------------------------------------------------------
+
+# exercise: 
+
+# use rdchem data set and test if b1 > 2b2
+
+reg1 <- lm(lrd ~ lsales + I(2*lsales + profmarg) , rdchem)
+stargazer(reg1, type = "text")
+
+summary(reg1)
+
+
+pvalue <- 1 - pt(16.416, 29)
+pvalue
+
+
+
+
+
+
+
+
+
+#-----------------------------  Optional        -------------------------------------
 # later in chapter 6 we will see that we can use the following function as well.
 library(car)
 linearHypothesis(reg, c("jc-univ=0"))
