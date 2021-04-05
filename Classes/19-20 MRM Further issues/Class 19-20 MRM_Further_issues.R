@@ -50,7 +50,13 @@ MRM <-lm(stndfnl~ atndrte+ priGPA + ACT
          + atndrte:priGPA
          , data=attend)
 
-stargazer(MRM, type = "text")
+stargazer(MRM, MRM2, type = "text")
+
+
+MRM2 <-lm(stndfnl~ atndrte+ priGPA + ACT 
+         + I(priGPA^2) + I(ACT^2)
+         , data=attend)
+
 
 # testing H0: (b1 + 2.59 b6) = 0
 linearHypothesis(MRM, c("atndrte+ 2.59 * atndrte:priGPA"))
@@ -61,6 +67,8 @@ linearHypothesis(MRM, c("atndrte+ 2.59 * atndrte:priGPA"))
 
 
 MRM <- lm(colgpa~sat+hsperc+hsize+I(hsize^2),gpa2)
+stargazer(MRM, type = "text")
+
 
 # Define sets of regressor variables
 xvalues <- data.frame(sat=c(1200, 1000), hsperc=c(30,50), hsize=c(5,10))
