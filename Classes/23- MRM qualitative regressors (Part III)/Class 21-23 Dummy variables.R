@@ -94,7 +94,7 @@ predict(MRM_dummy_dep)[1:6]
 
 
 # or alternatively
-Confusion_Matrix <- table(mroz$inlf, predict(MRM_dummy_dep) > 0.5)
+Confusion_Matrix <- table(mroz$inlf, predict(MRM_dummy_dep) >= 0.5)
 prop.table(Confusion_Matrix,margin=1)
 
 
@@ -109,19 +109,22 @@ summary(predict(MRM_dummy_dep))
 y_pred <- predict(MRM_dummy_dep)
 hist(y_pred)
 
+
 y_pred <- ifelse(y_pred<0, 0 , y_pred)
 y_pred <- ifelse(y_pred>1, 1 , y_pred)
 
 
 hist(y_pred)
 
+# does this change the confusion matrix?
 Confusion_Matrix <- table(mroz$inlf, y_pred >= 0.5)
 prop.table(Confusion_Matrix,margin=1)
 
-
+accuracy <- (203+350)/(203+122+78+350)
+accuracy
 ########################
 
-# for HW10 question 6: How to define a binary variable ecobuy
+# for HW10 question 5: How to define a binary variable ecobuy
 head(apple)
 df <- mutate(apple, ecobuy = ifelse(ecolbs>0,1,0))
 
