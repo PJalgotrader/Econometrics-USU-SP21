@@ -12,35 +12,6 @@ library(wooldridge)
 library(dplyr)
 
 
-############################## Optional: making dummy variables in R ###############
-#install.packages("fastDummies")
-library(fastDummies)
-
-head(mtcars)
-help(mtcars)
-str(mtcars)
-
-stargazer(lm(mpg~ wt+cyl+am, mtcars), type="text") # does this make any sense? why?
-table(mtcars$cyl)
-
-# using dummy_cols() function to make dummy variables in R:
-dummy_cols(mtcars$cyl)
-
-
-# let's make cyl, vs, am, gear and carb dummy variables: 
-df<- mtcars
-df<- df %>% dummy_cols("cyl") 
-head(df)
-
-stargazer(lm(mpg~ wt+cyl_6+cyl_4, df), type="text")
-
-
-# is there an easier way in R: yes, using factor()
-stargazer(lm(mpg~ wt+factor(cyl), mtcars), type="text") 
-
-# now let's try a model with all the dummies for cyl and am! 
-stargazer(lm(mpg~ wt+factor(cyl)+am, mtcars), type="text") 
-
 
 ###############################################################################
 
