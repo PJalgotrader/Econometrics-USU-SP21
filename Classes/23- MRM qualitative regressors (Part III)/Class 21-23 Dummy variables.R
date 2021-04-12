@@ -26,7 +26,7 @@ head(wage1)
 reg_categories <- lm(lwage~I(married*(1-female))+ I(married*female) + I((1-married)*female) + educ + exper+I(exper^2) + tenure + I(tenure^2), wage1)
 stargazer(reg_categories, type="text")
 
-plot(effect("tenure", reg_categories))
+plot(effect("exper", reg_categories))
 
 #model 2
 reg_interaction <- lm(lwage~ female + married + married:female + educ + exper+I(exper^2) + tenure + I(tenure^2), wage1)
@@ -36,7 +36,8 @@ stargazer(reg_categories,reg_interaction, type="text")
 # model 1 is better if you are interested for testing for wage differentials between any group and the base group
 # model 2 allows us to easily test the null hypothesis that the gender differential does not depend on marital status or not. 
 
-
+reg_final_model <- lm(lwage~ female + married + married:female + educ + exper + tenure + I(tenure^2), wage1)
+stargazer(reg_interaction, reg_final_model, type="text")
 
 ###############################################################################
 
@@ -120,7 +121,7 @@ hist(y_pred)
 Confusion_Matrix <- table(mroz$inlf, y_pred >= 0.5)
 prop.table(Confusion_Matrix,margin=1)
 
-accuracy <- (203+350)/(203+122+78+350)
+accuracy <- (203+350)/(203+122+78+350) # this is the overall significance
 accuracy
 ########################
 
@@ -131,6 +132,8 @@ df <- mutate(apple, ecobuy = ifelse(ecolbs>0,1,0))
 head(df)
 
 
+LPM <- lm(ecobuy ~ ecoprc + regprc + faminc + hhsize + educ + age, df)
+stargazer(LPM, type = "text")
 
 
 
