@@ -12,7 +12,7 @@ library(wooldridge)
 library(dplyr)
 
 
-############################## making dummy variables in R ###############
+############################## Optional: making dummy variables in R ###############
 #install.packages("fastDummies")
 library(fastDummies)
 
