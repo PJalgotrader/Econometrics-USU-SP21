@@ -66,6 +66,8 @@ summary(lm( u_hat_log^2   ~ logy_hat  + I(logy_hat^2) ))
 # Example 8.2 Heteroskedasticity-Robust F Statistic    
 
 MRM_HC <- lm(cumgpa~sat+hsperc+tothrs+female+black+white, data=gpa3, subset=(spring==1))
+summary(MRM_HC)
+
 
 # Usual SE:
 coeftest(MRM_HC)
@@ -116,6 +118,8 @@ hist(resid(MRM))
 qqnorm(resid(MRM), pch = 1, frame = FALSE)
 qqline(resid(MRM), col = "red", lwd = 2)
 
+
+# remedy 1
 MRM_log <- lm(lprice~ bdrms+lotsize+sqrft, hprice1 )
 hist(resid(MRM_log))
 qqnorm(resid(MRM_log), pch = 1, frame = FALSE)
@@ -125,7 +129,13 @@ stargazer(MRM,MRM_log, type="text")
 bptest(MRM)
 bptest(MRM_log)
 
+# remedy 2
+coeftest(MRM) 
+coeftest(MRM,vcov= hccm(MRM,type = "hc0"))
 
+
+
+# remedy 3
 # FGLS steps
 uhat <- resid(MRM)
 logu2 <- log(uhat^2)
